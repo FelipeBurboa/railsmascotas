@@ -25,6 +25,12 @@
     <%= form.label :description %>
     <%= form.text_area :description %>
   </div>
+  <div class="field">
+    <%= form.label :pet %>
+    <%= form.select :pet_id, @pets.map {|pet|
+    [pet.name, pet.id] }, prompt: "Select your pet..." %>
+
+  </div>
 
   <div class="actions">
     <%= form.submit %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_31_205454) do
+ActiveRecord::Schema.define(version: 2022_08_10_233710) do
 
   create_table "pet_histories", force: :cascade do |t|
     t.float "weight"
@@ -26,6 +26,8 @@ ActiveRecord::Schema.define(version: 2018_12_31_205454) do
     t.date "birthdate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "pet_history_id"
+    t.index ["pet_history_id"], name: "index_pets_on_pet_history_id"
   end
 
 end

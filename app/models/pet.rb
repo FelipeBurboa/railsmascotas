@@ -1,5 +1,5 @@
 class Pet < ApplicationRecord
-
+has_many :pet_histories, dependent: :delete_all
   def history_count
     #TODO-implement
   end

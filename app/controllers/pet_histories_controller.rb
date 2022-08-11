@@ -1,6 +1,6 @@
 class PetHistoriesController < ApplicationController
   before_action :set_pet_history, only: [:show, :edit, :update, :destroy]
-
+  before_action :query_pets, only: [:show, :new, :edit, :update]
   # GET /pet_histories
   # GET /pet_histories.json
   def index
@@ -70,5 +70,8 @@ class PetHistoriesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def pet_history_params
       params.require(:pet_history).permit(:weight, :heigth, :description)
+    end
+    def query_pets
+      @pets = Pet.select(:id, :name, :race, :birthday).order(name: :asc)
     end
 end
