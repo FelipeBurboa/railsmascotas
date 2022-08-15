@@ -1,21 +1,16 @@
 <p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @pet.name %>
 </p>
-
 <p>
   <strong>Race:</strong>
   <%= @pet.race %>
 </p>
-
 <p>
   <strong>Birthdate:</strong>
   <%= @pet.birthdate %>
 </p>
-
-
 <table>
   <thead>
     <tr>
@@ -29,9 +24,26 @@
   <tbody>
     <tr>
       <td><%= @pet.avg_weight %></td>
-      <td><%= @pet.avg_height %></td>
+      <td><%= @pet.avg_heigth %></td>
       <td><%= @pet.max_weight %></td>
       <td><%= @pet.max_height%></td>
+    </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+    <tr>
+      <th>Altura</th>
+      <th>Peso</th>
+      <th>Visitas</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><% @pet.pet_histories.each do |history| %>
+        <li>Visita número: <%= history.id %>, Altura:<%= history.heigth %>, Peso:<%= history.weight %>, descripción: <%= history.description %> </li>
+                        <% end %></td>
     </tr>
   </tbody>
 </table>

@@ -27,9 +27,8 @@
   </div>
   <div class="field">
     <%= form.label :pet %>
-    <%= form.select :pet_id, @pets.map {|pet|
-    [pet.name, pet.id] }, prompt: "Select your pet..." %>
-
+    <%# <%= form.select() %> 
+    <%= form.select(:pet_id, options_from_collection_for_select(@pets, :id, :name), { include_blank: "Elige un mascota" }, {class: "form-select"}) %>  
   </div>
 
   <div class="actions">

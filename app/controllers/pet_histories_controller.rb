@@ -4,17 +4,20 @@ class PetHistoriesController < ApplicationController
   # GET /pet_histories
   # GET /pet_histories.json
   def index
-    @pet_histories = PetHistory.all
+    #@pet_histories = Pet.includes(:pet).order(created_at: :asc)
+    @pet_histories = PetHistory.includes(:pet).order(name: :asc)
   end
 
   # GET /pet_histories/1
   # GET /pet_histories/1.json
   def show
+    #@pet = Pet.find(params[:id])
   end
 
   # GET /pet_histories/new
   def new
     @pet_history = PetHistory.new
+    #@pets = Pet.all
   end
 
   # GET /pet_histories/1/edit
@@ -25,13 +28,12 @@ class PetHistoriesController < ApplicationController
   # POST /pet_histories.json
   def create
     @pet_history = PetHistory.new(pet_history_params)
-
     respond_to do |format|
       if @pet_history.save
         format.html { redirect_to @pet_history, notice: 'Pet history was successfully created.' }
         format.json { render :show, status: :created, location: @pet_history }
       else
-        format.html { render :new }
+        format.html { render :new, status: :unprocessable_entity  }
         format.json { render json: @pet_history.errors, status: :unprocessable_entity }
       end
     end
@@ -69,9 +71,9 @@ class PetHistoriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def pet_history_params
-      params.require(:pet_history).permit(:weight, :heigth, :description)
+      params.require(:pet_history).permit(:weight, :heigth, :description, :pet_id)
     end
     def query_pets
-      @pets = Pet.select(:id, :name, :race, :birthday).order(name: :asc)
+      @pets = Pet.select(:id, :name).order(name: :asc)
     end
 end

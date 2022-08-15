@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @client.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @client.phone %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @client.email %>
+</p>
+<h3 class="d-flex justify-content-evenly">Mascotas</h3>
+<table class= "table table-bordered tabla">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Altura Maxíma</th>
+            <th>Peso Máximo</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @client.pets.each do |mascota| %>
+            <tr>
+                <td><%= mascota.name %></td>
+                <td><%= mascota.max_height %></td>
+                <td><%= mascota.max_weight %></td>
+            </tr>
+        <% end %>
+    </tbody>
+</table>
+<%= link_to 'Edit', edit_client_path(@client) %> |
+<%= link_to 'Back', clients_path %>

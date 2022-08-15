@@ -25,6 +25,11 @@
     <%= form.label :birthdate %>
     <%= form.date_select :birthdate %>
   </div>
+  <div class="field">
+    <%= form.label :client %>
+    <%# <%= form.select() %> 
+    <%= form.select(:client_id, options_from_collection_for_select(@clients, :id, :name), { include_blank: "Dueño" }, {class: "form-select"}) %>  
+  </div>
 
   <div class="actions">
     <%= form.submit %>
