@@ -1,18 +1,18 @@
 <p id="notice"><%= notice %></p>
 <p>
-  <strong>Name:</strong>
+  <strong>Nombre:</strong>
   <%= @pet.name %>
 </p>
 <p>
-  <strong>Race:</strong>
+  <strong>Raza:</strong>
   <%= @pet.race %>
 </p>
 <p>
-  <strong>Birthdate:</strong>
+  <strong>Fecha nacimiento:</strong>
   <%= @pet.birthdate %>
 </p>
-<table>
-  <thead>
+<table class="table">
+  <thead class="table-dark">
     <tr>
       <th>Peso promedio</th>
       <th>Altura promedio</th>
@@ -30,21 +30,23 @@
     </tr>
   </tbody>
 </table>
-<table>
-  <thead>
+
+<table class="table">
+  <thead class="table-dark">
     <tr>
-      <th>Altura</th>
       <th>Peso</th>
-      <th>Visitas</th>
+      <th>Altura</th>
+      <th>Fecha Visitas</th>
     </tr>
   </thead>
-
   <tbody>
-    <tr>
-      <td><% @pet.pet_histories.each do |history| %>
-        <li>Visita número: <%= history.id %>, Altura:<%= history.heigth %>, Peso:<%= history.weight %>, descripción: <%= history.description %> </li>
-                        <% end %></td>
-    </tr>
+      <% @pet.pet_histories.each do |history| %>
+      <tr>
+      <td><%= history.weight %></td>
+        <td><%= history.heigth %></td>
+         <td><%=history.created_at.year%>/<%=history.created_at.month%>/<%=history.created_at.day%></td>
+         </tr>                
+        <% end %>
   </tbody>
 </table>
 

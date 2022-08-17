@@ -20,7 +20,7 @@ validates :name, presence: true
   else
       "Sin visitas"             
   end
-  #f.max
+  
   end
 
   def avg_weight
@@ -39,16 +39,15 @@ validates :name, presence: true
     end
   #f.max
   end
-
   def avg_heigth
     #TODO-implement
     if self.pet_histories.present?
       f =[]
       d = self.pet_histories.map do |c|
-          c.heigth
+          c.heigth.to_f
       end 
       d.each do |altura|
-          f << altura
+          f << altura.to_f
       end
       (f.sum.to_f)/f.count.to_f
   else
